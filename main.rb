@@ -18,8 +18,8 @@ require 'optparse'
 require 'logger'
 
 pwd = Dir.getwd
-#time = Time.new()
-#time = time.strftime("%Y-%m-%d-%H:%M:%S")
+time = Time.new()
+time = time.strftime("%Y-%m-%d-%H:%M:%S")
 
 options = {}
 
@@ -73,7 +73,7 @@ container.objects.each do |objects|
 	end
 	
 	if File.exist?("#{pwd}/#{obj_dirname}") == true && File.exist?("#{pwd}/#{obj_dirname}/#{obj_basename}") == false
-		`wget -q http://static.metrika.ru/public/#{objects} -O #{pwd}/#{obj_dirname}/#{obj_basename}`
+        `wget -q http://static.metrika.ru/public/#{objects} -O #{pwd}/#{obj_dirname}/#{obj_basename}`
         puts "wget http://static.metrika.ru/public/#{objects} -O #{pwd}/#{obj_dirname}/#{obj_basename}" if options[:verbose] == true
         logger.info("Backup #{obj_basename}") if options[:verbose] == false
 	end
